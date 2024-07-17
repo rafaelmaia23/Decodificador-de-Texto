@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/styles/modern-normalize.css" />
+    <link rel="stylesheet" href="public/styles/style.css" />
+    <title>Decodificador</title>
+  </head>
+  <body>
+    <header class="container">
+      <nav class="navbar">
+        <img
+          src="public/img/logo.png"
+          alt="Logo letra A da Alura"
+          class="navbar-logo"
+        />
+        <div class="navbar-links">
+          <a href="#">Decodificador padrão</a>
+          <a href="#">Decodificador melhorado</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <h1>O Decodificador</h1>
+      <section class="input-area">
+        <textarea
+          class="input-text"
+          name="input-text"
+          id="input-text"
+          placeholder="Digite seu texto"
+        ></textarea>
+        <p>
+          <img
+            src="public/img/bi_exclamation-circle-fill.svg"
+            alt="Simbolo de exclamação"
+          />
+          Apenas letras mminúsculas e sem acento.
+        </p>
+        <button class="btn btn-criptografar">Criptografar</button>
+        <button class="btn btn-descriptografar">Descriptografar</button>
+      </section>
+      <section class="output-area">
+        <h2>Nenhuma messagem encontrada</h2>
+        <textarea
+          name="output-text"
+          id="output-text"
+          class="output-text"
+          placeholder="Digite um texto que você deseja criptografar ou descriptografar."
+        ></textarea>
+      </section>
+    </main>
+    <footer class="container">
+      <p>Desenvolvido por Rafael Maia da Fonseca</p>
+    </footer>
+    <script src="public/scripts/main.js"></script>
+  </body>
+</html>

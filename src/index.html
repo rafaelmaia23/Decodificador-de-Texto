@@ -4,13 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="public/styles/modern-normalize.css" />
-        <link rel="stylesheet" href="public/styles/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="public/styles/style.css" />
         <title>Decodificador</title>
     </head>
     <body>
@@ -21,10 +21,16 @@
                     alt="Logo letra A da Alura"
                     class="navbar-logo"
                 />
-                <div class="navbar-links">
-                    <a href="#">Decodificador padrão</a>
-                    <a href="#">Decodificador melhorado</a>
-                </div>
+                <ul class="navbar-links">
+                    <li class="navbar-list-item">
+                        <a class="navbar-link" href="#">Decodificador padrão</a>
+                    </li>
+                    <li class="navbar-list-item">
+                        <a class="navbar-link" href="#"
+                            >Decodificador melhorado</a
+                        >
+                    </li>
+                </ul>
             </nav>
         </header>
         <main class="container main">
@@ -61,7 +67,9 @@
                         src="public/img/High quality products 1 1.svg"
                         alt="Desenho de uma garota com uma lupa em frente do olho"
                     />
-                    <h2>Nenhuma messagem encontrada</h2>
+                    <h2 class="output-area-heading">
+                        Nenhuma messagem encontrada
+                    </h2>
                     <textarea
                         name="output-text"
                         id="output-text"
@@ -74,7 +82,7 @@
             </div>
         </main>
         <footer class="container footer">
-            <p>Desenvolvido por Rafael Maia da Fonseca</p>
+            <p>©️ 2024 - Desenvolvido por Rafael Maia da Fonseca</p>
         </footer>
         <script src="public/scripts/main.js"></script>
     </body>

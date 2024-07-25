@@ -1,11 +1,12 @@
 "use strict";
 
-const encryptBtn = document.querySelector(".btn-criptografar");
-const decryptBtn = document.querySelector(".btn-descriptografar");
-const inputTextArea = document.querySelector(".input-text");
-const outputTextArea = document.querySelector(".output-text");
-const outputImg = document.querySelector(".output-area-img");
-const outputHeading = document.querySelector(".output-area-heading");
+const encryptBtn = document.querySelector(".btn-encrypt");
+const decryptBtn = document.querySelector(".btn-decrypt");
+const copyBtn = document.querySelector(".btn-copy");
+const inputTextArea = document.querySelector(".main-input-textarea");
+const outputTextArea = document.querySelector(".main-output-textarea");
+const outputImg = document.querySelector(".main-output-img");
+const outputHeading = document.querySelector(".main-output-text");
 
 function encrypt(input) {
     const cryptKeys = getCryptKeys();
@@ -43,7 +44,6 @@ function getCryptKeys() {
 }
 
 function writeOutput(output) {
-    //TODO sumir com img e h2
     outputImg.style.display = "none";
     outputHeading.style.display = "none";
     outputTextArea.value = output;
@@ -71,4 +71,22 @@ decryptBtn.addEventListener("click", () => {
     }
     const decryptedMsg = decrypt(input);
     writeOutput(decryptedMsg);
+});
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    const inputTextArea = document.querySelector(".main-input-textarea");
+    const outputTextArea = document.querySelector(".main-output-textarea");
+
+    const adjustHeight = (textarea) => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+    };
+
+    inputTextArea.addEventListener("input", () => adjustHeight(inputTextArea));
+    outputTextArea.addEventListener("input", () =>
+        adjustHeight(outputTextArea)
+    );
+
+    // adjustHeight(inputTextArea);
+    // adjustHeight(outputTextArea);
 });

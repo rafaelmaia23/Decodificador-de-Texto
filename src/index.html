@@ -14,76 +14,70 @@
         <title>Decodificador</title>
     </head>
     <body>
-        <header class="container">
-            <nav class="navbar">
+        <div class="primary-container">
+            <header class="container header">
                 <img
                     src="public/img/logo.png"
                     alt="Logo letra A da Alura"
-                    class="navbar-logo"
+                    class="header-logo"
                 />
-                <ul class="navbar-links">
-                    <li class="navbar-list-item">
-                        <a class="navbar-link" href="#">Decodificador padrão</a>
-                    </li>
-                    <li class="navbar-list-item">
-                        <a class="navbar-link" href="#"
-                            >Decodificador melhorado</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main class="container main">
-            <!-- <h1>O Decodificador</h1> -->
-            <div class="inputs">
-                <section class="input-area">
-                    <div class="input-text-wrapper">
-                        <textarea
-                            class="input-text"
-                            name="input-text"
-                            id="input-text"
-                            placeholder="Digite seu texto"
-                        ></textarea>
-                        <p>
-                            <img
-                                src="public/img/bi_exclamation-circle-fill.svg"
-                                alt="Simbolo de exclamação"
-                            />
-                            Apenas letras minúsculas e sem acento.
-                        </p>
-                    </div>
-                    <div class="btn-wrapper">
-                        <button class="btn btn-criptografar">
-                            Criptografar
-                        </button>
-                        <button class="btn btn-descriptografar">
-                            Descriptografar
-                        </button>
+                <nav class="header-navbar">
+                    <ul class="header-navbar-list">
+                        <li class="header-navbar-list-item">
+                            <a class="header-navbar-list-item-link" href="#"
+                                >Decodificador padrão</a
+                            >
+                        </li>
+                        <li class="header-navbar-list-item">
+                            <a class="header-navbar-list-item-link" href="#"
+                                >Decodificador melhorado</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main class="container main">
+                <section class="main-input">
+                    <textarea
+                        class="main-input-textarea"
+                        name="input-text"
+                        placeholder="Digite seu texto"
+                    ></textarea>
+                    <p class="main-input-text">
+                        <img
+                            class="main-input-text-img"
+                            src="public/img/bi_exclamation-circle-fill.svg"
+                            alt="Simbolo de exclamação"
+                        />
+                        Apenas letras minúsculas e sem acento.
+                    </p>
+                    <div class="main-input-btns">
+                        <button class="btn btn-encrypt">Criptografar</button>
+                        <button class="btn btn-decrypt">Descriptografar</button>
                     </div>
                 </section>
-                <section class="output-area">
+                <section class="main-output">
                     <img
-                        class="output-area-img"
+                        class="main-output-img"
                         src="public/img/High quality products 1 1.svg"
                         alt="Desenho de uma garota com uma lupa em frente do olho"
                     />
-                    <h2 class="output-area-heading">
-                        Nenhuma messagem encontrada
-                    </h2>
+                    <p class="main-output-text">Nenhuma messagem encontrada</p>
                     <textarea
+                        class="main-output-textarea"
                         name="output-text"
-                        id="output-text"
-                        class="output-text"
                         placeholder="Digite um texto que você deseja criptografar ou descriptografar."
                         readonly
                     ></textarea>
-                    <button class="btn btn-copiar">Copiar</button>
+                    <button class="btn btn-copy">Copiar</button>
                 </section>
-            </div>
-        </main>
-        <footer class="container footer">
-            <p>©️ 2024 - Desenvolvido por Rafael Maia da Fonseca</p>
-        </footer>
+            </main>
+            <footer class="container footer">
+                <p class="footer-text">
+                    ©️ 2024 - Desenvolvido por Rafael Maia da Fonseca
+                </p>
+            </footer>
+        </div>
         <script src="public/scripts/main.js"></script>
     </body>
 </html>

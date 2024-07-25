@@ -4,10 +4,12 @@ const encryptBtn = document.querySelector(".btn-encrypt");
 const decryptBtn = document.querySelector(".btn-decrypt");
 const copyBtn = document.querySelector(".btn-copy");
 const inputTextarea = document.querySelector(".main-input-textarea");
-const initialHeight = inputTextarea.clientHeight;
+const inputInitialHeight = inputTextarea.scrollHeight;
 const outputTextarea = document.querySelector(".main-output-textarea");
+const outputInitialHeight = outputTextarea.scrollHeight;
 const outputImg = document.querySelector(".main-output-img");
 const outputText = document.querySelector(".main-output-text");
+const body = document.querySelector("body");
 
 function encrypt(input) {
     const cryptKeys = getCryptKeys();
@@ -44,26 +46,27 @@ function getCryptKeys() {
     };
 }
 
-function adjustHeight(textarea) {
-    if (!window.innerWidth < 1024) return;
-
+function inputAdjustHeight(textarea) {
+    if (!(window.innerWidth < 1024)) return;
     textarea.style.height = "auto";
-    if (textarea.scrollHeight > initialHeight) {
-        textarea.style.height = textarea.scrollHeight + "px";
-    } else {
-        textarea.style.height = initialHeight + "px";
-    }
+    const currentHeight = textarea.scrollHeight;
+    const newHeight = Math.max(currentHeight, inputInitialHeight);
+    textarea.style.height = newHeight + "px";
 }
 
-function updateOutputHeight() {
-    adjustHeight(outputTextarea);
+function outputAdjustHeight(textarea) {
+    if (!(window.innerWidth < 1024)) return;
+    textarea.style.height = "auto";
+    const currentHeight = textarea.scrollHeight;
+    const newHeight = Math.max(currentHeight, outputInitialHeight);
+    textarea.style.height = newHeight + "px";
 }
 
 function writeOutput(output) {
     outputImg.style.display = "none";
     outputText.style.display = "none";
     outputTextarea.value = output;
-    updateOutputHeight();
+    outputAdjustHeight(outputTextarea);
 }
 
 encryptBtn.addEventListener("click", () => {
@@ -91,9 +94,7 @@ decryptBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    const inputTextarea = document.querySelector(".main-input-textarea");
-    inputTextarea.addEventListener("input", () => adjustHeight(inputTextarea));
-
-    adjustHeight(inputTextarea);
-    adjustHeight(outputTextarea);
+    inputTextarea.addEventListener("input", () =>
+        inputAdjustHeight(inputTextarea)
+    );
 });

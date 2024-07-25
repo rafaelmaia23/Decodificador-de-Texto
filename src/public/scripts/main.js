@@ -3,10 +3,11 @@
 const encryptBtn = document.querySelector(".btn-encrypt");
 const decryptBtn = document.querySelector(".btn-decrypt");
 const copyBtn = document.querySelector(".btn-copy");
-const inputTextArea = document.querySelector(".main-input-textarea");
-const outputTextArea = document.querySelector(".main-output-textarea");
+const inputTextarea = document.querySelector(".main-input-textarea");
+const initialHeight = inputTextarea.clientHeight;
+const outputTextarea = document.querySelector(".main-output-textarea");
 const outputImg = document.querySelector(".main-output-img");
-const outputHeading = document.querySelector(".main-output-text");
+const outputText = document.querySelector(".main-output-text");
 
 function encrypt(input) {
     const cryptKeys = getCryptKeys();
@@ -43,14 +44,30 @@ function getCryptKeys() {
     };
 }
 
+function adjustHeight(textarea) {
+    if (!window.innerWidth < 1024) return;
+
+    textarea.style.height = "auto";
+    if (textarea.scrollHeight > initialHeight) {
+        textarea.style.height = textarea.scrollHeight + "px";
+    } else {
+        textarea.style.height = initialHeight + "px";
+    }
+}
+
+function updateOutputHeight() {
+    adjustHeight(outputTextarea);
+}
+
 function writeOutput(output) {
     outputImg.style.display = "none";
-    outputHeading.style.display = "none";
-    outputTextArea.value = output;
+    outputText.style.display = "none";
+    outputTextarea.value = output;
+    updateOutputHeight();
 }
 
 encryptBtn.addEventListener("click", () => {
-    const input = inputTextArea.value;
+    const input = inputTextarea.value;
     if (!isInputValid(input)) {
         writeOutput(
             "Input invalido! Texto não pode ser vazio, deve conter apenas letras minusculas e não ter acentos."
@@ -62,7 +79,7 @@ encryptBtn.addEventListener("click", () => {
 });
 
 decryptBtn.addEventListener("click", () => {
-    const input = inputTextArea.value;
+    const input = inputTextarea.value;
     if (!isInputValid(input)) {
         writeOutput(
             "Input invalido! Texto não pode ser vazio, deve conter apenas letras minusculas e não ter acentos."
@@ -74,19 +91,9 @@ decryptBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    const inputTextArea = document.querySelector(".main-input-textarea");
-    const outputTextArea = document.querySelector(".main-output-textarea");
+    const inputTextarea = document.querySelector(".main-input-textarea");
+    inputTextarea.addEventListener("input", () => adjustHeight(inputTextarea));
 
-    const adjustHeight = (textarea) => {
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-    };
-
-    inputTextArea.addEventListener("input", () => adjustHeight(inputTextArea));
-    outputTextArea.addEventListener("input", () =>
-        adjustHeight(outputTextArea)
-    );
-
-    // adjustHeight(inputTextArea);
-    // adjustHeight(outputTextArea);
+    adjustHeight(inputTextarea);
+    adjustHeight(outputTextarea);
 });

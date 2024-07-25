@@ -188,13 +188,13 @@ textarea:focus {
     width: 100%;
     height: 100%;
     background-color: var(--white);
-    text-align: center;
 }
 
 .main-output-textarea::placeholder {
     color: var(--gray-400);
     font-weight: 400;
     font-size: 1rem;
+    text-align: center;
 }
 
 .btn-copy {

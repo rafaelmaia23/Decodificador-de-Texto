@@ -153,6 +153,11 @@ textarea:focus {
     text-decoration: none;
     padding: 0.5em 1em;
     border-radius: 2em;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
 }
 
 .btn-encrypt {

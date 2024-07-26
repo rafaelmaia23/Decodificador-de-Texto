@@ -41,9 +41,9 @@ body {
 .header {
     width: 100%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     padding: 1rem;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 .header-logo {
@@ -52,26 +52,63 @@ body {
 
 .header-navbar {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-navbar-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.header-navbar-icon span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--dark-blue-300);
+    margin: 0.2rem 0;
+    transition: 0.4s;
 }
 
 .header-navbar-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 600px;
+    left: 0;
+    background-color: var(--dark-blue-300);
     list-style: none;
+    padding: 0;
+    margin: 0;
+    /* list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 0;
-    margin: 0;
+    margin: 0; */
+}
+
+.header-navbar-list.active {
+    display: flex;
 }
 
 .header-navbar-list-item {
     text-align: center;
+    margin: 15px 0;
 }
 
 .header-navbar-list-item-link {
     text-decoration: none;
-    color: var(--dark-blue-300);
+    color: var(--white);
+    transition: 0.4s;
+}
+
+.header-navbar-list-item-link:hover {
+    color: var(--light-blue-100);
 }
 
 .main {
@@ -154,6 +191,7 @@ textarea:focus {
     padding: 0.5em 1em;
     border-radius: 2em;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -258,8 +296,24 @@ textarea:focus {
         max-width: 768px;
     }
 
+    .header-navbar-icon {
+        display: none;
+    }
+
     .header-navbar-list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: flex-start;
+        gap: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    header-navbar-list-item-link {
+        text-decoration: none;
+        color: var(--dark-blue-300);
     }
 }
 

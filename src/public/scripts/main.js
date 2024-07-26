@@ -10,6 +10,8 @@ const outputInitialHeight = outputTextarea.scrollHeight;
 const outputImg = document.querySelector(".main-output-img");
 const outputText = document.querySelector(".main-output-text");
 const body = document.querySelector("body");
+const mobileMenu = document.querySelector("header-navbar-icon");
+const navLinks = document.querySelector("header-navbar-list");
 
 toastr.options = {
     closeButton: true,
@@ -140,6 +142,10 @@ copyBtn.addEventListener("click", async () => {
     } catch (err) {
         toastr["error"]("o texto não foi copiado!", "Erro");
     }
+});
+
+mobileMenu.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
 });
 
 document.addEventListener("DOMContentLoaded", () => {

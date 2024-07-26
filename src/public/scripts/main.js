@@ -52,14 +52,32 @@ function inputAdjustHeight(textarea) {
     const currentHeight = textarea.scrollHeight;
     const newHeight = Math.max(currentHeight, inputInitialHeight);
     textarea.style.height = newHeight + "px";
+    AdjustBodyHeight();
 }
 
 function outputAdjustHeight(textarea) {
+    if (window.innerWidth < 1024) {
+        textarea.style.height = "auto";
+        const currentHeight = textarea.scrollHeight;
+        const newHeight = Math.max(currentHeight, outputInitialHeight);
+        textarea.style.height = newHeight + "px";
+    } else {
+        textarea.style.height = "100%";
+    }
+
+    AdjustBodyHeight();
+}
+
+function AdjustBodyHeight() {
     if (!(window.innerWidth < 1024)) return;
-    textarea.style.height = "auto";
-    const currentHeight = textarea.scrollHeight;
-    const newHeight = Math.max(currentHeight, outputInitialHeight);
-    textarea.style.height = newHeight + "px";
+    if (
+        inputTextarea.scrollHeight > inputInitialHeight ||
+        outputTextarea.scrollHeight > outputInitialHeight
+    ) {
+        body.style.height = "100%";
+    } else {
+        body.style.height = "100vh";
+    }
 }
 
 function writeOutput(output) {

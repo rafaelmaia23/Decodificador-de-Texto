@@ -11,6 +11,24 @@ const outputImg = document.querySelector(".main-output-img");
 const outputText = document.querySelector(".main-output-text");
 const body = document.querySelector("body");
 
+toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toast-top-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+};
+
 function encrypt(input) {
     const cryptKeys = getCryptKeys();
     let encryptedInput = input;
@@ -97,6 +115,7 @@ encryptBtn.addEventListener("click", () => {
     }
     const encryptedMsg = encrypt(input);
     writeOutput(encryptedMsg);
+    copyBtn.style.display = "block";
 });
 
 decryptBtn.addEventListener("click", () => {
@@ -109,9 +128,21 @@ decryptBtn.addEventListener("click", () => {
     }
     const decryptedMsg = decrypt(input);
     writeOutput(decryptedMsg);
+    copyBtn.style.display = "block";
 });
 
-document.addEventListener("DOMContentLoaded", (event) => {
+copyBtn.addEventListener("click", async () => {
+    const textToCopy = outputTextarea.value;
+
+    try {
+        await navigator.clipboard.writeText(textToCopy);
+        toastr["success"]("o texto foi copiado com sucesso!", "Texto Copiado");
+    } catch (err) {
+        toastr["error"]("o texto não foi copiado!", "Erro");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
     inputTextarea.addEventListener("input", () =>
         inputAdjustHeight(inputTextarea)
     );

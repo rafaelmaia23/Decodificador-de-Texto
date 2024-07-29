@@ -10,8 +10,10 @@ const outputInitialHeight = outputTextarea.scrollHeight;
 const outputImg = document.querySelector(".main-output-img");
 const outputText = document.querySelector(".main-output-text");
 const body = document.querySelector("body");
-const mobileMenu = document.querySelector("header-navbar-icon");
-const navLinks = document.querySelector("header-navbar-list");
+const mobileMenu = document.querySelector(".header-navbar-icon");
+const svgMenuIcon = document.querySelector(".svg-menu-icon");
+const svgCloseIcon = document.querySelector(".svg-close-icon");
+const navList = document.querySelector(".header-navbar-list");
 
 toastr.options = {
     closeButton: true,
@@ -145,7 +147,10 @@ copyBtn.addEventListener("click", async () => {
 });
 
 mobileMenu.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+    console.log("clicou");
+    navList.classList.toggle("active");
+    svgMenuIcon.classList.toggle("svg-close");
+    svgCloseIcon.classList.toggle("svg-close");
 });
 
 document.addEventListener("DOMContentLoaded", () => {

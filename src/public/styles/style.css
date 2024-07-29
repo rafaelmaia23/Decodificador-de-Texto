@@ -10,6 +10,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif;
 }
 
 body {
@@ -42,8 +43,8 @@ body {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
-    /* gap: 1rem; */
 }
 
 .header-logo {
@@ -60,36 +61,33 @@ body {
 .header-navbar-icon {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.header-navbar-icon span {
-    height: 3px;
-    width: 25px;
-    background-color: var(--dark-blue-300);
-    margin: 0.2rem 0;
-    transition: 0.4s;
+.header-navbar-icon-svg {
+    stroke: var(--dark-blue-300);
+    width: 3rem;
+}
+
+.svg-close {
+    display: none;
 }
 
 .header-navbar-list {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     position: absolute;
-    top: 600px;
+    top: 5rem;
     left: 0;
     background-color: var(--dark-blue-300);
     list-style: none;
     padding: 0;
     margin: 0;
-    /* list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 0;
-    margin: 0; */
 }
 
 .header-navbar-list.active {
@@ -97,8 +95,9 @@ body {
 }
 
 .header-navbar-list-item {
+    display: block;
     text-align: center;
-    margin: 15px 0;
+    margin: 1rem 0;
 }
 
 .header-navbar-list-item-link {
@@ -108,7 +107,7 @@ body {
 }
 
 .header-navbar-list-item-link:hover {
-    color: var(--light-blue-100);
+    color: var(--gray-400);
 }
 
 .main {
@@ -296,24 +295,30 @@ textarea:focus {
         max-width: 768px;
     }
 
+    .header {
+        gap: 2rem;
+    }
+
     .header-navbar-icon {
         display: none;
     }
 
     .header-navbar-list {
-        list-style: none;
+        position: static;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-        gap: 1rem;
+        background-color: var(--light-blue-100);
+        gap: 2rem;
         padding: 0;
         margin: 0;
     }
 
-    header-navbar-list-item-link {
+    .header-navbar-list-item-link {
         text-decoration: none;
         color: var(--dark-blue-300);
+        font-size: 1.3rem;
     }
 }
 

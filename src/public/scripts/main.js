@@ -1,12 +1,11 @@
 "use strict";
 
+//Seletores
 const encryptBtn = document.querySelector(".btn-encrypt");
 const decryptBtn = document.querySelector(".btn-decrypt");
 const copyBtn = document.querySelector(".btn-copy");
 const inputTextarea = document.querySelector(".main-input-textarea");
-const inputInitialHeight = inputTextarea.scrollHeight;
 const outputTextarea = document.querySelector(".main-output-textarea");
-const outputInitialHeight = outputTextarea.scrollHeight;
 const outputImg = document.querySelector(".main-output-img");
 const outputText = document.querySelector(".main-output-text");
 const body = document.querySelector("body");
@@ -15,6 +14,10 @@ const svgMenuIcon = document.querySelector(".svg-menu-icon");
 const svgCloseIcon = document.querySelector(".svg-close-icon");
 const navList = document.querySelector(".header-navbar-list");
 
+const inputInitialHeight = inputTextarea.scrollHeight;
+const outputInitialHeight = outputTextarea.scrollHeight;
+
+//Config Toastr
 toastr.options = {
     closeButton: true,
     debug: false,
@@ -33,6 +36,7 @@ toastr.options = {
     hideMethod: "fadeOut",
 };
 
+//Funções de criptgrafia e decriptografia
 function encrypt(input) {
     const cryptKeys = getCryptKeys();
     let encryptedInput = input;
@@ -53,11 +57,6 @@ function decrypt(input) {
     return decryptedInput;
 }
 
-function isInputValid(input) {
-    const regex = /^(?!\s*$)[a-z\s:,;!.?]+$/;
-    return regex.test(input);
-}
-
 function getCryptKeys() {
     return {
         e: "enter",
@@ -68,47 +67,43 @@ function getCryptKeys() {
     };
 }
 
-function inputAdjustHeight(textarea) {
-    if (!(window.innerWidth < 1024)) return;
-    textarea.style.height = "auto";
-    const currentHeight = textarea.scrollHeight;
-    const newHeight = Math.max(currentHeight, inputInitialHeight);
-    textarea.style.height = newHeight + "px";
-    AdjustBodyHeight();
+//Validação de entrada de texto
+function isInputValid(input) {
+    const regex = /^(?!\s*$)[a-z\s:,;!.?]+$/;
+    return regex.test(input);
 }
 
-function outputAdjustHeight(textarea) {
+//Funções de ajuste de altura Textarea e Body
+function AdjustTextareaHeight(textarea, initialHeight, isOutput = false) {
     if (window.innerWidth < 1024) {
         textarea.style.height = "auto";
-        const currentHeight = textarea.scrollHeight;
-        const newHeight = Math.max(currentHeight, outputInitialHeight);
+        const newHeight = Math.max(textarea.scrollHeight, initialHeight);
         textarea.style.height = newHeight + "px";
-    } else {
+    } else if (isOutput) {
         textarea.style.height = "100%";
     }
-
     AdjustBodyHeight();
 }
 
 function AdjustBodyHeight() {
-    if (!(window.innerWidth < 1024)) return;
-    if (
-        inputTextarea.scrollHeight > inputInitialHeight ||
-        outputTextarea.scrollHeight > outputInitialHeight
-    ) {
-        body.style.height = "100%";
-    } else {
-        body.style.height = "100vh";
+    if (window.innerWidth < 1024) {
+        body.style.height =
+            inputTextarea.scrollHeight > inputInitialHeight ||
+            outputTextarea.scrollHeight > outputInitialHeight
+                ? "100%"
+                : "100vh";
     }
 }
 
+//Escrita de saida de texto
 function writeOutput(output) {
     outputImg.style.display = "none";
     outputText.style.display = "none";
     outputTextarea.value = output;
-    outputAdjustHeight(outputTextarea);
+    AdjustTextareaHeight(outputTextarea, outputInitialHeight, true);
 }
 
+//Event listeners
 encryptBtn.addEventListener("click", () => {
     const input = inputTextarea.value;
     if (!isInputValid(input)) {
@@ -137,7 +132,6 @@ decryptBtn.addEventListener("click", () => {
 
 copyBtn.addEventListener("click", async () => {
     const textToCopy = outputTextarea.value;
-
     try {
         await navigator.clipboard.writeText(textToCopy);
         toastr["success"]("o texto foi copiado com sucesso!", "Texto Copiado");
@@ -155,6 +149,6 @@ mobileMenu.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     inputTextarea.addEventListener("input", () =>
-        inputAdjustHeight(inputTextarea)
+        AdjustTextareaHeight(inputTextarea, inputInitialHeight)
     );
 });

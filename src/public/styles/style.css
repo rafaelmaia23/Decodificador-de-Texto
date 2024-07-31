@@ -10,6 +10,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif;
 }
 
 body {
@@ -41,9 +42,9 @@ body {
 .header {
     width: 100%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
-    gap: 1rem;
 }
 
 .header-logo {
@@ -52,26 +53,61 @@ body {
 
 .header-navbar {
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-navbar-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.header-navbar-icon-svg {
+    stroke: var(--dark-blue-300);
+    width: 3rem;
+}
+
+.svg-close {
+    display: none;
 }
 
 .header-navbar-list {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
+    display: none;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    width: 100%;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    background-color: var(--dark-blue-300);
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.header-navbar-list.active {
+    display: flex;
+}
+
 .header-navbar-list-item {
+    display: block;
     text-align: center;
+    margin: 1rem 0;
 }
 
 .header-navbar-list-item-link {
     text-decoration: none;
-    color: var(--dark-blue-300);
+    color: var(--white);
+    transition: 0.4s;
+}
+
+.header-navbar-list-item-link:hover {
+    color: var(--gray-400);
 }
 
 .main {
@@ -128,13 +164,14 @@ textarea:focus {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.5rem;
+    gap: 0.3rem;
     font-size: 1rem;
     color: var(--gray-500);
 }
 
-.main-input-text-img {
+.main-input-text-svg {
     color: var(--gray-500);
+    width: 1.5rem;
 }
 
 .main-input-btns {
@@ -154,6 +191,7 @@ textarea:focus {
     padding: 0.5em 1em;
     border-radius: 2em;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -258,8 +296,30 @@ textarea:focus {
         max-width: 768px;
     }
 
+    .header {
+        gap: 2rem;
+    }
+
+    .header-navbar-icon {
+        display: none;
+    }
+
     .header-navbar-list {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: flex-start;
+        background-color: var(--light-blue-100);
+        gap: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-navbar-list-item-link {
+        text-decoration: none;
+        color: var(--dark-blue-300);
+        font-size: 1.3rem;
     }
 }
 

@@ -13,7 +13,9 @@ const mobileMenu = document.querySelector(".header-navbar-icon");
 const svgMenuIcon = document.querySelector(".svg-menu-icon");
 const svgCloseIcon = document.querySelector(".svg-close-icon");
 const navList = document.querySelector(".header-navbar-list");
+const selectElement = document.querySelector(".main-input-encryption-select");
 
+const secretKey = "3A49F78E57E992A998E8214BC852A";
 const inputInitialHeight = inputTextarea.scrollHeight;
 const outputInitialHeight = outputTextarea.scrollHeight;
 
@@ -37,40 +39,43 @@ toastr.options = {
 };
 
 //Funções de criptgrafia e decriptografia
-function encrypt(input) {
-    const cryptKeys = getCryptKeys();
-    let encryptedInput = input;
-    for (const [key, value] of Object.entries(cryptKeys)) {
-        const regex = new RegExp(key, "g");
-        encryptedInput = encryptedInput.replace(regex, value);
-    }
-    return encryptedInput;
+const encryptFunctions = {
+    base64: encryptBase64,
+    AES: encryptAES,
+};
+
+const decryptFunctions = {
+    base64: decryptBase64,
+    AES: decryptAES,
+};
+
+//Funções de entrada
+function encrypt(input, type) {
+    const encryptFunction = encryptFunctions[type] || encryptFunctions.base64;
+    return encryptFunction(input);
 }
 
-function decrypt(input) {
-    const cryptKeys = getCryptKeys();
-    let decryptedInput = input;
-    for (const [key, value] of Object.entries(cryptKeys)) {
-        const regex = new RegExp(value, "g");
-        decryptedInput = decryptedInput.replace(regex, key);
-    }
-    return decryptedInput;
+function decrypt(input, type) {
+    const decryptFunction = decryptFunctions[type] || decryptFunctions.base64;
+    return decryptFunction(input);
 }
 
-function getCryptKeys() {
-    return {
-        e: "enter",
-        i: "imes",
-        a: "ai",
-        o: "ober",
-        u: "ufat",
-    };
+//Base 64
+function encryptBase64(input) {
+    return btoa(input);
 }
 
-//Validação de entrada de texto
-function isInputValid(input) {
-    const regex = /^(?!\s*$)[a-z\s:,;!.?]+$/;
-    return regex.test(input);
+function decryptBase64(input) {
+    return atob(input);
+}
+
+//AES
+function encryptAES(input) {
+    return CryptoJS.AES.encrypt(input, secretKey).toString();
+}
+
+function decryptAES(input) {
+    return CryptoJS.AES.decrypt(input, secretKey).toString(CryptoJS.enc.Utf8);
 }
 
 //Funções de ajuste de altura Textarea e Body
@@ -106,26 +111,16 @@ function writeOutput(output) {
 //Event listeners
 encryptBtn.addEventListener("click", () => {
     const input = inputTextarea.value;
-    if (!isInputValid(input)) {
-        writeOutput(
-            "Input invalido! Texto não pode ser vazio, deve conter apenas letras minusculas e não ter acentos."
-        );
-        return;
-    }
-    const encryptedMsg = encrypt(input);
+    const type = selectElement.value;
+    const encryptedMsg = encrypt(input, type);
     writeOutput(encryptedMsg);
     copyBtn.style.display = "block";
 });
 
 decryptBtn.addEventListener("click", () => {
     const input = inputTextarea.value;
-    if (!isInputValid(input)) {
-        writeOutput(
-            "Input invalido! Texto não pode ser vazio, deve conter apenas letras minusculas e não ter acentos."
-        );
-        return;
-    }
-    const decryptedMsg = decrypt(input);
+    const type = selectElement.value;
+    const decryptedMsg = decrypt(input, type);
     writeOutput(decryptedMsg);
     copyBtn.style.display = "block";
 });

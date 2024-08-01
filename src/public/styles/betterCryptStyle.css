@@ -76,9 +76,9 @@ body {
 }
 
 .btn-decrypt {
-    border: solid 1px var(--caribbean-current);
+    border: solid 4px var(--caribbean-current);
     background-color: var(--black);
-    color: var(--caribbean-current);
+    color: var(--platinum);
 }
 
 .main-output {
@@ -100,7 +100,7 @@ body {
 }
 
 .btn-copy {
-    border: solid 1px var(--caribbean-current);
+    border: solid 3px var(--caribbean-current);
     background-color: var(--platinum);
     color: var(--caribbean-current);
 }

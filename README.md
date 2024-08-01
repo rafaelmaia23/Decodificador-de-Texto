@@ -1,5 +1,7 @@
 # Decodificador de Texto
 
+<img src="src/public/img/readme/Decodificador%20de%20texto.png" alt="badge ONE" style="width: 200px;"/>
+
 Projeto do desafio do Decodificador de Texto desenvolvido para o programa ONE - Oracle Next Education em parceria com a Alura.
 
 O projeto pode ser testado pelo link: <https://rafaelmaia23.github.io/Decodificador-de-Texto/index.html>

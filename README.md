@@ -13,15 +13,9 @@ O projeto conta com um design responsivo, desenvolvido para ser mobile first.
 ### Decodificador Padrão
 
 <div style="display: flex; justify-content: space-around; width: 100%;">
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/base-mobile.jpg" alt="Decodificador padrão mobile" style="width: 100%;">
-  </div>
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/base-tablet.jpg" alt="Decodificador padrão tablet" style="width: 100%;">
-  </div>
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/base-desktop.jpg" alt="Decodificador padrão desktop" style="width: 100%;">
-  </div>
+   <img src="src/public/img/readme/base-mobile.jpg" alt="Decodificador padrão mobile" style="width: 20%;">
+    <img src="src/public/img/readme/base-tablet.jpg" alt="Decodificador padrão tablet" style="width: 25%;">
+    <img src="src/public/img/readme/base-desktop.jpg" alt="Decodificador padrão desktop" style="width: 50%;">
 </div>
 
 ### Segundo Decodificador
@@ -29,15 +23,9 @@ O projeto conta com um design responsivo, desenvolvido para ser mobile first.
 Também foi desenvolvida uma segunda página com um segundo decodificador.
 
 <div style="display: flex; justify-content: space-around; width: 100%;">
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/second-mobile.jpg" alt="Segundo decodificador mobile" style="width: 100%;">
-  </div>
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/second-tablet.jpg" alt="Segundo decodificador tablet" style="width: 100%;">
-  </div>
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/second-desktop.jpg" alt="Segundo decodificador desktop" style="width: 100%;">
-  </div>
+  <img src="src/public/img/readme/second-mobile.jpg" alt="Segundo decodificador mobile" style="width: 20%;">
+  <img src="src/public/img/readme/second-tablet.jpg" alt="Segundo decodificador tablet" style="width: 25%;">
+  <img src="src/public/img/readme/second-desktop.jpg" alt="Segundo decodificador desktop" style="width: 50%;">
 </div>
 
 No segundo decodificador, é possível encriptar e descriptografar usando os algoritmos Base64 e AES.
@@ -54,12 +42,8 @@ Nas versões mobile, o projeto possui uma textarea de input com altura dinâmica
 Após a criptografia de um texto, um botão para copiar o texto aparece na área de output. Ao ser clicado, o texto é automaticamente copiado para o clipboard do usuário e uma notificação aparece na tela.
 
 <div style="display: flex; justify-content: flex-start; width: 100%;">
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/second-copy.jpg" alt="Segundo decodificador botão de cópia" style="height: 400px;">
-  </div>
-  <div style="padding: 5px;">
-    <img src="src/public/img/readme/secont-notification.jpg" alt="Segundo decodificador notificação">
-  </div>
+  <img src="src/public/img/readme/second-copy.jpg" alt="Segundo decodificador botão de cópia" style="height: 400px;">
+  <img src="src/public/img/readme/secont-notification.jpg" alt="Segundo decodificador notificação">
 </div>
 
 #### Projeto criado por Rafael Maia
